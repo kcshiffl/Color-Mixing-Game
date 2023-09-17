@@ -17,24 +17,27 @@ public partial class PauseMenu : ColorRect {
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
 	}
-
-	public void OnResumeButtonPressed() {
-		// GetTree().ChangeSceneToFile("res://Assets/Scenes/ColorPickerScene.tscn");
-	}
-
+	
 	public void OnQuitButtonPressed() {
 		GetTree().ChangeSceneToFile("res://Assets/Scenes/MainMenu.tscn");
+		GetTree().Paused = false;
 	}
 
 	public void Unpause() {
 		animator.Play("Unpause");
-		GetTree().Paused = false;
-		Input.MouseMode = Input.MouseModeEnum.Captured; 
 	}
 
 	public void Pause() {
-		animator.Play("Pause");
 		GetTree().Paused = true;
-		Input.MouseMode = Input.MouseModeEnum.Visible; 
+		animator.Play("Pause");
+	}
+
+	public void OnAnimationFinished(string animName) {
+		if (animName == "Unpause") {
+			Input.MouseMode = Input.MouseModeEnum.Captured; 
+			GetTree().Paused = false;
+		} else if (animName == "Pause") {
+			Input.MouseMode = Input.MouseModeEnum.Visible;
+		}
 	}
 }

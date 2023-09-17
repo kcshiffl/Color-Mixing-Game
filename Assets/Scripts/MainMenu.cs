@@ -13,6 +13,7 @@ public partial class MainMenu : ColorRect
 
 	public void OnPlayButtonPressed() {
 		GetTree().ChangeSceneToFile("res://Assets/Scenes/ColorPickerScene.tscn");
+		Input.MouseMode = Input.MouseModeEnum.Captured; 
 	}
 
 	public void OnQuitButtonPressed() {
