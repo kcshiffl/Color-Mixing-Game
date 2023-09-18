@@ -27,18 +27,25 @@ public partial class ColorPickerScene : Node3D
 	}
 
 	public override void _Process(double delta) {
-		if (Input.IsPhysicalKeyPressed(Key.Escape)) {		// Pause Menu
+		if (Input.IsActionJustPressed("Escape")) {		// Pause Menu
 			pauseMenu.Pause();
-		} else if (Input.IsPhysicalKeyPressed(Key.Up)) {	// Increase paint amount
+		} else if (Input.IsActionPressed("Shift")) {	// Increase paint amount
+			if (Input.IsActionJustPressed("Up"))  {
+				paintSlider.Value+=5;
+			} else if (Input.IsActionJustPressed("Down")) {
+				paintSlider.Value-=5;
+			}
+		} else if (Input.IsActionJustPressed("Up")) {	// Decrease paint amount
 			paintSlider.Value++;
-		} else if (Input.IsPhysicalKeyPressed(Key.Down)) {	// Decrease paint amount
+		} else if (Input.IsActionJustPressed("Down")) {	// Decrease paint amount
 			paintSlider.Value--;
-		} else if (Input.IsPhysicalKeyPressed(Key.Left)) {	// Move Left
+		} else if (Input.IsActionJustPressed("Left")) {	// Move Left
 			color = color > 0 ? color-1 : 0;
-		} else if (Input.IsPhysicalKeyPressed(Key.Right)) { // Move right
-			color = color < 4 ? color+1 : 4;
-		} else if (Input.IsPhysicalKeyPressed(Key.Space)) { // Add paint
-			currentColor.AddColor(((PaintTubeColor)(currentHoverColor.GetNode("Color"))).color);
+		} else if (Input.IsActionJustPressed("Right")) { // Move right
+			color = color < 7 ? color+1 : 7;
+		} else if (Input.IsActionJustPressed("Enter")) { // Add paint
+			Color addedColor = ((PaintTubeColor)(currentHoverColor.GetNode("Color"))).color;
+			currentColor.AddColor(addedColor, paintSlider.Value*.01);
 		}
 
 		currentHoverColor = GetNode<Node3D>((string)colors[color]);

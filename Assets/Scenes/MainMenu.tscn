@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvajtc3kc0fxq"]
+[gd_scene load_steps=6 format=3 uid="uid://cvajtc3kc0fxq"]
 
 [ext_resource type="Shader" path="res://Assets/Art/Shaders/lur.gdshader" id="1_v8288"]
 [ext_resource type="Theme" uid="uid://3oiir42w1cpv" path="res://Assets/Art/UI Styles/DefaultTheme.tres" id="2_gacrn"]
 [ext_resource type="Script" path="res://Assets/Scripts/MainMenu.cs" id="2_nw6uj"]
+[ext_resource type="Script" path="res://Assets/Scripts/ColorRect.cs" id="3_vff1w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hiqov"]
 shader = ExtResource("1_v8288")
@@ -10,6 +11,7 @@ shader_parameter/blur = 0.0
 shader_parameter/brighness = 1.0
 
 [node name="MainMenu" type="ColorRect"]
+show_behind_parent = true
 material = SubResource("ShaderMaterial_hiqov")
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +20,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-color = Color(0.392157, 0.545098, 0.603922, 1)
 script = ExtResource("2_nw6uj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -28,9 +29,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.552941, 1, 0.854902, 1)
+color = Color(1, 0.741176, 0.698039, 1)
+script = ExtResource("3_vff1w")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+texture_repeat = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,6 +56,7 @@ theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 25
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -66,6 +70,7 @@ text = "Color Picker Simulator"
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="PlayButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
