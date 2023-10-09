@@ -1,8 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddiwr0ce4dc7q"]
+[gd_scene load_steps=9 format=3 uid="uid://ddiwr0ce4dc7q"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/ColorJar.cs" id="1_0kqwp"]
+[ext_resource type="Material" uid="uid://cqy75q732w2f0" path="res://Assets/Art/Shaders/Outline.tres" id="1_in4xh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7ob3"]
+albedo_color = Color(1, 1, 1, 0)
+roughness = 0.05
+emission = Color(0.431373, 0.431373, 0.431373, 1)
+refraction_enabled = true
+refraction_scale = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_n3oyn"]
 _surfaces = [{
@@ -33,26 +39,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n3oyn")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t46s"]
-blend_mode = 1
-depth_draw_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oar8u"]
-next_pass = SubResource("StandardMaterial3D_7t46s")
-cull_mode = 1
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.913725, 0.94902, 0.964706, 0.290196)
-metallic = 0.43
-roughness = 0.03
-refraction_enabled = true
-refraction_scale = 0.09
-grow = true
-grow_amount = 0.125
-proximity_fade_distance = 7.4
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3aj5"]
+next_pass = ExtResource("1_in4xh")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nd0bw"]
 _surfaces = [{
@@ -83,21 +71,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nd0bw")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqso2"]
-cull_mode = 1
-metallic_specular = 1.0
-roughness = 0.48
-
 [node name="ColorJar" type="Node3D"]
 
 [node name="Jar" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02273, 0)
 mesh = SubResource("ArrayMesh_0mb00")
-surface_material_override/0 = SubResource("StandardMaterial3D_oar8u")
 
 [node name="Paint" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.0322718, 1.02245, 0.00299811)
 mesh = SubResource("ArrayMesh_engej")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_pqso2")
 script = ExtResource("1_0kqwp")

@@ -16,7 +16,7 @@ public partial class ColorJar : MeshInstance3D {
 
 	private void changeColor(Color newColor) {
 		currentColor = newColor;
-		StandardMaterial3D material = (StandardMaterial3D)this.GetSurfaceOverrideMaterial(0);
+		StandardMaterial3D material = this.GetActiveMaterial(0) as StandardMaterial3D;
 		material.AlbedoColor = newColor;
 		this.SetSurfaceOverrideMaterial(0, material);
 	}

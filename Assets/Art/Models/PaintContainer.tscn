@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://5a4og0pawfjq"]
+[gd_scene load_steps=9 format=3 uid="uid://5a4og0pawfjq"]
 
+[ext_resource type="Material" uid="uid://cqy75q732w2f0" path="res://Assets/Art/Shaders/Outline.tres" id="1_la64w"]
 [ext_resource type="Script" path="res://Assets/Scripts/PaintTubeColor.cs" id="2_e284y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3pt6"]
+next_pass = ExtResource("1_la64w")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_i1kwf"]
 _surfaces = [{
@@ -34,10 +36,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i1kwf")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo1jl"]
-albedo_color = Color(0.780392, 0.811765, 0.772549, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7hpo"]
+next_pass = ExtResource("1_la64w")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8yog6"]
 _surfaces = [{
@@ -67,10 +67,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8yog6")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_keot3"]
-albedo_color = Color(0.752941, 0.745098, 0.0235294, 1)
-emission = Color(0.992157, 0.85098, 0, 1)
-
 [node name="PaintContainer" type="Node3D"]
 metadata/TubeColor = NodePath("Color")
 
@@ -78,13 +74,11 @@ metadata/TubeColor = NodePath("Color")
 transform = Transform3D(0.680924, 0, 0, 0, 1, 0, 0, 0, 0.489062, 0, 1.45974, 0)
 mesh = SubResource("ArrayMesh_rpr0w")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_eo1jl")
 
 [node name="Color" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.696811, 0, 0, 0, 1.02333, 0, 0, 0, 0.500473, -0.0407777, 1.47323, -0.0119383)
 mesh = SubResource("ArrayMesh_hbb7a")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_keot3")
 script = ExtResource("2_e284y")
 metadata/White = Color(1, 1, 1, 1)
 metadata/Black = Color(0, 0, 0, 1)

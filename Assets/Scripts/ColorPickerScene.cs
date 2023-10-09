@@ -52,4 +52,8 @@ public partial class ColorPickerScene : Node3D
 		jar.Position = new Vector3(currentHoverColor.Position.X, jar.Position.Y , jar.Position.Z);
 		paintAmountLabel.Text = paintSlider.Value + "%";
 	}
+
+	private void moveJarPosition() {
+		
+	}
 }

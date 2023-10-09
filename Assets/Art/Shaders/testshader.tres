@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbohlacbfvrvd"]
+
+[ext_resource type="Material" uid="uid://cqy75q732w2f0" path="res://Assets/Art/Shaders/Outline.tres" id="1_usebp"]
+
+[resource]
+next_pass = ExtResource("1_usebp")
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.701961, 0, 0.701961, 1)

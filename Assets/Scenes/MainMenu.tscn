@@ -7,8 +7,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hiqov"]
 shader = ExtResource("1_v8288")
-shader_parameter/blur = 0.0
-shader_parameter/brighness = 1.0
 
 [node name="MainMenu" type="ColorRect"]
 show_behind_parent = true

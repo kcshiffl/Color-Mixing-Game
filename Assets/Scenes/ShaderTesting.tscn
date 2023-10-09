@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvonhu3ri68dw"]
+
+[ext_resource type="Material" uid="uid://cbohlacbfvrvd" path="res://Assets/Art/Shaders/testshader.tres" id="1_ql37v"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dgb1d"]
+
+[node name="ShaderTesting" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_dgb1d")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
+material = ExtResource("1_ql37v")
